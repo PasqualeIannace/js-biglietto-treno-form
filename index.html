@@ -7,9 +7,42 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1>Calcolo biglietto</h1>
-    <p id="result"></p>
+    
+    <h1 class="txtCenter">Calcolo biglietto</h1>
 
+    <div class="form dFlex">
+        <form name="ticketForm">
+            <div>
+                <label for="fname">Nome e Cognome</label>
+                <input type="text" name="name_surname" id="fname" required>
+            </div> 
+            <div>
+                <label for="km">KM da percorrere</label>
+                <input type="number" name="" id="km" required>
+            </div>
+            <div>
+                <label for="clientEta">Inserisci la tua età</label>
+                <input type="number" name="" id="clientEta" min="0" max="100" required>
+            </div>                  
+        </form>
+        <button type="submit" name="" id="" onclick="ticketFnct()">INVIA</button>
+    </div>
+
+    <div class="ticket" id="ticket">
+        <h2>Il tuo biglietto</h2>
+        <div>
+            <h3>NOME PASSEGGERO</h3>
+            <p id="firstName"></p>
+        </div>
+        <div>
+            <h4>Costo</h4>
+            <p id="fullPrice"></p>
+            <h4>Offerta</h4>
+            <p id="ticketType"></p>
+            <h4>Prezzo finale</h4>
+            <p id="ticketPrice"></p>
+        </div>
+    </div>
     <script src="./js/main.js"></script>
 </body>
 </html>

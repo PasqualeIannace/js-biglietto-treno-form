@@ -1,21 +1,49 @@
+let btn = document.querySelector("#btnForm");
+
+
 const ticketKm = 0.21;
 
-const kmToDo = prompt("Inserisci i KM da percorrere");
-const eta = prompt("Inserisci la tua età (0-99 anni)");
+    function ticketFnct() {
+        nome = document.ticketForm.fname.value;
+        document.getElementById("firstName").innerHTML = nome;
+        kmToDo = document.ticketForm.km.value;
+        eta = document.ticketForm.clientEta.value;
+
+        const price = ticketKm * kmToDo;
+        const youngDiscount = (price/100) * 20;
+        const adultDiscount = (price/100) * 40;
+        const youngPrice = price - youngDiscount;
+        const adultPrice = price - adultDiscount;
+
+        // VERIFICA CAMPI
+        if (kmToDo < 0 || kmToDo == "") {
+            alert("ERRORE! Verificare i KM da percorrere");
+        } else if (nome == "" || nome == null) {
+            alert("ERRORE! Verificare il campo Nome e Cognome")
+        } else if (eta == "" || eta <= 0 || eta > 100) {
+            alert("ERRORE! La tua età non è corretta, inserire un valore compreso tra i 0 e 100 anni")
+        }
+        // STAMPA BIGLIETTO
+        else if ( eta <= 17 && eta >= 0 ) {
+            document.getElementById("ticket").style.display = "inline-block"
+            document.getElementById("fullPrice").innerHTML = `${price.toFixed(2)}€`;
+            document.getElementById("ticketType").innerHTML = `20% (${youngDiscount.toFixed(2)}€)`;
+            document.getElementById("ticketPrice").innerHTML = `${youngPrice.toFixed(2)}€`;
+        } else if ( eta > 17 && eta < 65){
+            document.getElementById("ticket").style.display = "inline-block"
+            document.getElementById("fullPrice").innerHTML = `${price.toFixed(2)}€`;
+            document.getElementById("ticketType").innerHTML = `0%`;
+            document.getElementById("ticketPrice").innerHTML = `${price.toFixed(2)}€`;
+        } else if ( eta >= 17 && eta <= 100 ) {
+            document.getElementById("ticket").style.display = "inline-block"
+            document.getElementById("fullPrice").innerHTML = `${price.toFixed(2)}€`;
+            document.getElementById("ticketType").innerHTML = `40% (${adultDiscount.toFixed(2)}€)`;
+            document.getElementById("ticketPrice").innerHTML = `${adultPrice.toFixed(2)}€`;
+        } else {
+            alert("Come ci sei arrivato qui? Hai rotto il programma!")
+        }
+    }
 
 
-const price = ticketKm * kmToDo;
-const youngDiscount = (price/100) * 20;
-const youngPrice = price - youngDiscount;
-const adultDiscount = (price/100) * 40;
-const adultPrice = price - adultDiscount;
 
-if ( eta <= 17 && eta >= 0 ) {
-    document.getElementById("result").innerHTML = `Il costo del biglietto è di ${price.toFixed(2)}€ ma viene scontato del 20% di ${youngDiscount.toFixed(2)}€. Il prezzo definitivo è ${youngPrice.toFixed(2)}€`;
-} else if ( eta > 17 && eta < 65){
-    document.getElementById("result").innerHTML = `Il costo del biglietto è di ${price.toFixed(2)}€`;
-} else if ( eta >= 17 && eta <= 99 ) {
-    document.getElementById("result").innerHTML = `Il costo del biglietto è di ${price.toFixed(2)}€ ma viene scontato del 40%! di ${adultDiscount.toFixed(2)}€. Il prezzo definitivo è ${adultPrice.toFixed(2)}€`;
-} else {
-    document.getElementById("result").innerHTML = `Inserire un età compresa tra i 0 e 99 anni`;
-}
+

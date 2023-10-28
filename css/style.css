@@ -6,4 +6,35 @@
 
 body {
     font-family: sans-serif;
+    background-color: crimson;
+}
+
+h1 {
+    font-size: 3em;
+    color: white;
+}
+
+/* Classi Atomiche */
+.txtCenter {
+    text-align: center;
+}
+
+.dFlex {
+    display: flex;
+}
+
+/* MAIN */
+
+.form,
+.ticket {
+    margin: 1em auto;
+    flex-direction: column;
+    background: white;
+    width: 80%;
+    border-radius: 1em;
+    padding: 2em;
+}
+
+.ticket {
+    display: none;
 }
